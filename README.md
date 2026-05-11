@@ -56,19 +56,51 @@ Technology Stack
 Frontend
 • HTML
 • Tailwind CSS
+• CSS3
 • JavaScript
 • React.js
+
+Why We Used React.js?
+• Fast and dynamic UI updates
+• Reusable components
+• Better chatbot integration
+• Smooth user experience
+
+Why We Used Tailwind CSS?
+• Faster UI development
+• Responsive modern design
+• Easy customization
+• Utility-first styling approach
 
 Backend
 • Python
 • REST API / FastAPI
 
+Why We Used FastAPI Instead of Node.js + Express?
+• Better AI integration with Python
+• Lightweight and high performance
+• Faster API handling
+• Supports asynchronous programming
+• Easy integration with AI libraries
+
 AI / ML
 • Groq AI
 • Llama 3.3 70B Versatile Model
 
+Why We Used Groq AI?
+• Fast AI responses
+• Low latency chatbot interaction
+• Free/affordable API access
+• Suitable for real-time AI systems
+
 Database
 • MongoDB
+
+Why We Used MongoDB Instead of PostgreSQL?
+• Flexible JSON-based storage
+• Better for dynamic AI-generated data
+• Easier handling of chatbot and user preference data
+• Faster development for AI applications
 
 APIs
 • Groq API
@@ -76,9 +108,33 @@ APIs
 • Overpass API
 • Fast2SMS API
 
+Why We Used These APIs?
+
+Groq API
+• Used for AI chatbot and career recommendations
+• Provides fast AI responses
+
+OpenStreetMap API
+• Used for location-based search
+• Helps identify nearby colleges
+
+Overpass API
+• Fetches nearby colleges dynamically
+• Provides real-time college data
+
+Fast2SMS API
+• Used for OTP verification
+• Secure user authentication
+
 Authentication
 • JWT Authentication
 • OTP Verification
+
+Why We Used JWT?
+• Secure login system
+• Stateless authentication
+• Protected API access
+• Better scalability
 
 Tools
 • Antigravity
