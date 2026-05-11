@@ -7,6 +7,8 @@ import After12th from "./pages/After12th";
 import DuringGraduation from "./pages/Duringgraduation";
 import AfterGraduation from "./pages/Aftergraduation";
 import ParentDashboard from "./pages/ParentDashboard";
+import EmployeeGuide from "./pages/Employeeguide";
+import OpportunitiesModule from "./pages/OpportunitiesModule";
 export default function App() {
   return (
     <BrowserRouter>
@@ -21,7 +23,9 @@ export default function App() {
         <Route path="/dashboard/during-grad" element={<DuringGraduation />} />
         <Route path="/dashboard/after-grad" element={<AfterGraduation />} />
         <Route path="/dashboard/parent" element={<ParentDashboard />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="/dashboard/employee" element={<EmployeeGuide />} />
+        <Route path="/dashboard/opportunities" element={<OpportunitiesModule />} />
+        {/*<Route path="*" element={<Navigate to="/login" replace />} />*/}
       </Routes>
     </BrowserRouter>
   );

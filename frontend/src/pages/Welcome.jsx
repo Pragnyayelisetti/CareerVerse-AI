@@ -107,7 +107,7 @@ export default function Welcome() {
 
                 parent: "/dashboard/parent",
                 employee: "/dashboard/employee",
-                scholarship: "/dashboard/scholarship",
+                scholarship: "/dashboard/opportunities",
             };
             window.location.href = routes[selected] || "/dashboard";
         }, 1800);
