@@ -1,175 +1,242 @@
-CareerVerse AI 🎓🤖
-AI-Powered Career & Scholarship Guidance System
+# CareerVerse AI 🎓🤖
+## AI-Powered Career & Scholarship Guidance System
 
-Overview
+---
+
+# 📌 Overview
+
 CareerVerse AI is an intelligent career guidance platform designed to help students make informed career decisions after 10th and 12th grade.
 
 The system uses Artificial Intelligence to analyze user interests, skills, education background, budget, and career goals to provide personalized recommendations for career paths, colleges, scholarships, and skill development.
 
-Problem Statement
+---
+
+# ❗ Problem Statement
+
 Many students feel confused after completing 10th or 12th grade while choosing the right course, college, or career path. Students often lack proper guidance related to budget, eligibility, scholarships, and future opportunities.
 
 CareerVerse AI solves this problem by providing a smart AI-powered platform for career guidance, college recommendations, and scholarship assistance.
 
-Features
+---
 
-User Modules
-• Student Portal
-• After 10th Guidance
-• After 12th Guidance
-• Scholarship Finder
-• AI Career Assistant
+# 🚀 Features
 
-AI Features
-• AI Career Recommendation
-• Interest & Skill Analysis
-• Personalized Career Roadmap
-• AI Chatbot Counseling
-• College Recommendation System
-• Eligibility Analysis
-• Skill Suggestions
+## 👨‍🎓 User Modules
 
-Scholarship Intelligence
-• Government Scholarships
-• Private Scholarships
-• State Scholarships
-• Merit Scholarships
-• Minority Scholarships
+• Student Portal  
+• After 10th Guidance  
+• After 12th Guidance  
+• Scholarship Finder  
+• AI Career Assistant  
 
-Financial Planning
-• Course Fee Estimation
-• Budget-Based College Filtering
-• Career Investment Guidance
+---
 
-Location-Based Features
-• Nearby College Search
-• Real-Time College Recommendations
-• Location-Based Filtering
+## 🤖 AI Features
 
-Alerts & Notifications
-• Scholarship Alerts
-• Career Notifications
-• Push Notifications
+• AI Career Recommendation  
+• Interest & Skill Analysis  
+• Personalized Career Roadmap  
+• AI Chatbot Counseling  
+• College Recommendation System  
+• Eligibility Analysis  
+• Skill Suggestions  
 
-Technology Stack
+---
 
-Frontend
-• HTML
-• Tailwind CSS
-• CSS3
-• JavaScript
-• React.js
+## 🎓 Scholarship Intelligence
 
-Why We Used React.js?
-• Fast and dynamic UI updates
-• Reusable components
-• Better chatbot integration
-• Smooth user experience
+• Government Scholarships  
+• Private Scholarships  
+• State Scholarships  
+• Merit Scholarships  
+• Minority Scholarships  
 
-Why We Used Tailwind CSS?
-• Faster UI development
-• Responsive modern design
-• Easy customization
-• Utility-first styling approach
+---
 
-Backend
-• Python
-• REST API / FastAPI
+## 💰 Financial Planning
 
-Why We Used FastAPI Instead of Node.js + Express?
-• Better AI integration with Python
-• Lightweight and high performance
-• Faster API handling
-• Supports asynchronous programming
-• Easy integration with AI libraries
+• Course Fee Estimation  
+• Budget-Based College Filtering  
+• Career Investment Guidance  
 
-AI / ML
-• Groq AI
-• Llama 3.3 70B Versatile Model
+---
 
-Why We Used Groq AI?
-• Fast AI responses
-• Low latency chatbot interaction
-• Free/affordable API access
-• Suitable for real-time AI systems
+## 📍 Location-Based Features
 
-Database
-• MongoDB
+• Nearby College Search  
+• Real-Time College Recommendations  
+• Location-Based Filtering  
 
-Why We Used MongoDB Instead of PostgreSQL?
-• Flexible JSON-based storage
-• Better for dynamic AI-generated data
-• Easier handling of chatbot and user preference data
-• Faster development for AI applications
+---
 
-APIs
-• Groq API
-• OpenStreetMap API
-• Overpass API
-• Fast2SMS API
+## 🔔 Alerts & Notifications
 
-Why We Used These APIs?
+• Scholarship Alerts  
+• Career Notifications  
+• Push Notifications  
 
-Groq API
-• Used for AI chatbot and career recommendations
-• Provides fast AI responses
+---
 
-OpenStreetMap API
-• Used for location-based search
-• Helps identify nearby colleges
+# 🛠 Technology Stack
 
-Overpass API
-• Fetches nearby colleges dynamically
-• Provides real-time college data
+## 🎨 Frontend
 
-Fast2SMS API
-• Used for OTP verification
-• Secure user authentication
+• HTML  
+• Tailwind CSS  
+• CSS3  
+• JavaScript  
+• React.js  
 
-Authentication
-• JWT Authentication
-• OTP Verification
+### Why We Used React.js?
 
-Why We Used JWT?
-• Secure login system
-• Stateless authentication
-• Protected API access
-• Better scalability
+• Fast and dynamic UI updates  
+• Reusable components  
+• Better chatbot integration  
+• Smooth user experience  
 
-Tools
-• Antigravity
-• GitHub
-• VS Code
+### Why We Used Tailwind CSS?
 
-Workflow
-• User Signup / Login
-• OTP Verification
-• AI Profile Analysis
-• Career Recommendation Engine
-• College Recommendation System
-• Scholarship Matching
-• Personalized Results
-• Notifications & Alerts
+• Faster UI development  
+• Responsive modern design  
+• Easy customization  
+• Utility-first styling approach  
 
-Project Architecture
+---
+
+## ⚙️ Backend
+
+• Python  
+• REST API / FastAPI  
+
+### Why We Used FastAPI Instead of Node.js + Express?
+
+• Better AI integration with Python  
+• Lightweight and high performance  
+• Faster API handling  
+• Supports asynchronous programming  
+• Easy integration with AI libraries  
+
+---
+
+## 🤖 AI / ML
+
+• Groq AI  
+• Llama 3.3 70B Versatile Model  
+
+### Why We Used Groq AI?
+
+• Fast AI responses  
+• Low latency chatbot interaction  
+• Free/affordable API access  
+• Suitable for real-time AI systems  
+
+---
+
+## 🗄 Database
+
+• MongoDB  
+
+### Why We Used MongoDB Instead of PostgreSQL?
+
+• Flexible JSON-based storage  
+• Better for dynamic AI-generated data  
+• Easier handling of chatbot and user preference data  
+• Faster development for AI applications  
+
+---
+
+# 🌍 APIs
+
+• Groq API  
+• OpenStreetMap API  
+• Overpass API  
+• Fast2SMS API  
+
+### Why We Used These APIs?
+
+#### 🤖 Groq API
+
+• Used for AI chatbot and career recommendations  
+• Provides fast AI responses  
+
+#### 🗺 OpenStreetMap API
+
+• Used for location-based search  
+• Helps identify nearby colleges  
+
+#### 📍 Overpass API
+
+• Fetches nearby colleges dynamically  
+• Provides real-time college data  
+
+#### 📱 Fast2SMS API
+
+• Used for OTP verification  
+• Secure user authentication  
+
+---
+
+# 🔐 Authentication
+
+• JWT Authentication  
+• OTP Verification  
+
+### Why We Used JWT?
+
+• Secure login system  
+• Stateless authentication  
+• Protected API access  
+• Better scalability  
+
+---
+
+# 🧰 Tools Used
+
+• Antigravity  
+• GitHub  
+• VS Code  
+
+---
+
+# 🔄 Workflow
+
+• User Signup / Login  
+• OTP Verification  
+• AI Profile Analysis  
+• Career Recommendation Engine  
+• College Recommendation System  
+• Scholarship Matching  
+• Personalized Results  
+• Notifications & Alerts  
+
+---
+
+# 🏗 Project Architecture
+
 CareerVerse AI follows a modular architecture:
 
-• Frontend for user interaction
-• Backend API for processing requests
-• AI engine for recommendation generation
-• MongoDB database for user data storage
-• External APIs for real-time educational and location-based data
+• Frontend for user interaction  
+• Backend API for processing requests  
+• AI engine for recommendation generation  
+• MongoDB database for user data storage  
+• External APIs for real-time educational and location-based data  
 
-Future Enhancements
-• Voice-based AI assistant
-• Regional language support
-• Real-time admission prediction
-• Internship recommendation system
-• Mobile application support
-• AI resume builder
+---
 
-Installation
+# 🌟 Future Enhancements
 
-Clone Repository
+• Voice-based AI assistant  
+• Regional language support  
+• Real-time admission prediction  
+• Internship recommendation system  
+• Mobile application support  
+• AI resume builder  
 
+---
+
+# ⚡ Installation
+
+## Clone Repository
+
+```bash
 git clone https://github.com/pragnyayelisetti/careerverse-ai.git
