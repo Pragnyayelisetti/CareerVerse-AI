@@ -21,9 +21,14 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="CareerVerse AI API", version="1.0.0", lifespan=lifespan)
 
+# ✅ FIXED: explicit origin instead of wildcard "*"
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://career-verse-ai-three.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
