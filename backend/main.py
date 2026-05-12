@@ -6,9 +6,18 @@ from auth import router as auth_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await connect_db()
+    try:
+        await connect_db()
+        print("Database connected")
+    except Exception as e:
+        print(f"Database connection failed: {e}")
+
     yield
-    await close_db()
+
+    try:
+        await close_db()
+    except Exception as e:
+        print(f"Database close failed: {e}")
 
 app = FastAPI(title="CareerVerse AI API", version="1.0.0", lifespan=lifespan)
 
