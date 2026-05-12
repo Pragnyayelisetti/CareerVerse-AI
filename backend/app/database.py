@@ -12,16 +12,24 @@ db = None
 async def connect_db():
     """Initialize the MongoDB connection and create indexes."""
     global client, db
-    client = AsyncIOMotorClient(MONGODB_URL)
-    db = client[DB_NAME]
 
-    # Unique indexes
-    await db.users.create_index("username", unique=True)
-    await db.users.create_index("mobile", unique=True)
-    # TTL index — auto-delete expired OTPs
-    await db.otps.create_index("expires_at", expireAfterSeconds=0)
+    try:
+        client = AsyncIOMotorClient(MONGODB_URL)
+        db = client[DB_NAME]
 
-    print(f"[DB] Connected to MongoDB: {DB_NAME}")
+        # test connection
+        await client.admin.command("ping")
+
+        # indexes
+        await db.users.create_index("username", unique=True)
+        await db.users.create_index("mobile", unique=True)
+        await db.otps.create_index("expires_at", expireAfterSeconds=0)
+
+        print(f"[DB] Connected to MongoDB: {DB_NAME}")
+
+    except Exception as e:
+        print(f"[DB ERROR]: {e}")
+        raise e
 
 
 async def close_db():
