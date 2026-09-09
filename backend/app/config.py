@@ -11,8 +11,8 @@ load_dotenv()
 ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL: str = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 
-# MongoDB
-MONGODB_URL: str = os.getenv("MONGO_URL")
+# MongoDB — accept either env var name to avoid silent mismatches
+MONGODB_URL: str = os.getenv("MONGODB_URL") or os.getenv("MONGO_URL")
 DB_NAME: str = os.getenv("DB_NAME", "careerverse")
 
 # OTP
