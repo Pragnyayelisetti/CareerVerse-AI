@@ -27,7 +27,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://localhost:3000",
-        "https://career-verse-ai-three.vercel.app",
+        "https://career-verse-ai-seven.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
