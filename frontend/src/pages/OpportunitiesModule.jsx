@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || "";
 
 const STAGES = [
     {
@@ -50,7 +50,7 @@ async function callGroq(messages, systemPrompt = "") {
             Authorization: `Bearer ${GROQ_API_KEY}`,
         },
         body: JSON.stringify({
-            model: "llama3-70b-8192",
+            model: "llama-3.3-70b-versatile",
             messages: [
                 ...(systemPrompt ? [{ role: "system", content: systemPrompt }] : []),
                 ...messages,
@@ -60,6 +60,12 @@ async function callGroq(messages, systemPrompt = "") {
         }),
     });
     const data = await res.json();
+    if (!res.ok || data.error) {
+        // Groq returned an error (bad/expired key, rate limit, deprecated model, etc.)
+        // — surface it instead of returning "" and failing silently downstream.
+        console.error("Groq API error:", data.error || data);
+        throw new Error(data.error?.message || `Groq API request failed (${res.status})`);
+    }
     return data.choices?.[0]?.message?.content || "";
 }
 
@@ -458,7 +464,12 @@ Return JSON: {"jobs": [...]}`,
                 parsed = JSON.parse(cleaned);
             } catch {
                 const jsonMatch = res.match(/\{[\s\S]*\}/);
-                if (jsonMatch) parsed = JSON.parse(jsonMatch[0]);
+                if (jsonMatch) {
+                    parsed = JSON.parse(jsonMatch[0]);
+                } else {
+                    console.error("Groq returned unparseable content:", res);
+                    throw new Error("AI response was not valid JSON.");
+                }
             }
 
             const allItems = [...(parsed.scholarships || []), ...(parsed.internships || []), ...(parsed.jobs || [])];
@@ -488,7 +499,8 @@ Return JSON: {"jobs": [...]}`,
             const defaultTab = selectedStage === "working" ? "jobs" : selectedStage === "graduation" ? "internships" : "scholarships";
             setActiveTab(defaultTab);
         } catch (e) {
-            setError("Could not fetch opportunities. Please check your Groq API key and try again.");
+            console.error("fetchOpportunities failed:", e);
+            setError(e.message || "Could not fetch opportunities. Please check your Groq API key and try again.");
         }
         setLoading(false);
     }

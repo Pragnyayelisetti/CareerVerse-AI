@@ -49,12 +49,29 @@ import httpx
 
 app.include_router(auth_router)
 
+OVERPASS_MIRRORS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://lz4.overpass-api.de/api/interpreter",
+]
+
+# Static safety-net so the "nearby colleges" section is never empty even if
+# every public Overpass mirror is unreachable (they're free, unauthenticated
+# servers and frequently rate-limit or block cloud-hosting IP ranges).
+FALLBACK_COLLEGES = [
+    {"tags": {"name": "Andhra Loyola College"}},
+    {"tags": {"name": "SRR & CVR Government Degree College"}},
+    {"tags": {"name": "PB Siddhartha College of Arts & Science"}},
+    {"tags": {"name": "Maris Stella College"}},
+]
+
 @app.get("/api/colleges/nearby")
 async def colleges_nearby(lat: float = 16.5062, lon: float = 80.6480, radius: int = 15000):
     """
     Proxies the Overpass (OpenStreetMap) query server-to-server so the
     browser never has to call overpass-api.de directly — avoids that
-    server's unreliable CORS headers entirely.
+    server's unreliable CORS headers entirely. Tries several public
+    mirrors, then falls back to a static list so the page is never empty.
     """
     query = f"""
     [out:json];
@@ -65,17 +82,20 @@ async def colleges_nearby(lat: float = 16.5062, lon: float = 80.6480, radius: in
     );
     out center;
     """
-    try:
-        async with httpx.AsyncClient(timeout=25.0) as client:
-            resp = await client.post(
-                "https://overpass-api.de/api/interpreter",
-                content=query,
-            )
-            resp.raise_for_status()
-            return resp.json()
-    except Exception as exc:
-        print(f"[OVERPASS ERROR] {exc}")
-        return {"elements": []}
+    for mirror in OVERPASS_MIRRORS:
+        try:
+            async with httpx.AsyncClient(timeout=20.0) as client:
+                resp = await client.post(mirror, content=query)
+                resp.raise_for_status()
+                data = resp.json()
+                if data.get("elements"):
+                    return data
+        except Exception as exc:
+            print(f"[OVERPASS ERROR] {mirror}: {exc}")
+            continue
+
+    print("[OVERPASS] All mirrors failed — returning fallback list")
+    return {"elements": FALLBACK_COLLEGES}
 
 @app.get("/")
 def root():
