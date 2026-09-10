@@ -36,7 +36,7 @@ async function askGemini(systemPrompt, userPrompt) {
                     Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
                 },
                 body: JSON.stringify({
-                    model: "openai/gpt-oss-120b",
+                    model: "llama-3.3-70b-versatile",
                     messages: [
                         {
                             role: "system",
@@ -192,22 +192,11 @@ Return JSON in this format:
             const lat = 16.5062;
             const lon = 80.6480;
 
-            const query = `
-        [out:json];
-        (
-          node["amenity"="college"](around:15000,${lat},${lon});
-          way["amenity"="college"](around:15000,${lat},${lon});
-          relation["amenity"="college"](around:15000,${lat},${lon});
-        );
-        out center;
-        `;
-
+            // Calls our own backend, which proxies Overpass server-to-server —
+            // avoids overpass-api.de's unreliable CORS headers entirely.
+            const apiBase = import.meta.env.VITE_API_URL || "http://localhost:8000";
             const res = await fetch(
-                "https://overpass-api.de/api/interpreter",
-                {
-                    method: "POST",
-                    body: query,
-                }
+                `${apiBase}/api/colleges/nearby?lat=${lat}&lon=${lon}&radius=15000`
             );
 
             const data = await res.json();
@@ -323,7 +312,7 @@ Return ONLY this JSON (no extra text):
                         Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
                     },
                     body: JSON.stringify({
-                        model: "openai/gpt-oss-120b",
+                        model: "llama-3.3-70b-versatile",
 
                         messages: [
                             {
