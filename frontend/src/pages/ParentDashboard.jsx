@@ -51,7 +51,7 @@ async function askGroq(systemPrompt, userPrompt, maxTokens = 900) {
                 Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
             },
             body: JSON.stringify({
-                model: "\openai/gpt-oss-120b",
+                model: "openai/gpt-oss-120b",
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: userPrompt },

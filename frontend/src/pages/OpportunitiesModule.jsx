@@ -50,7 +50,7 @@ async function callGroq(messages, systemPrompt = "") {
             Authorization: `Bearer ${GROQ_API_KEY}`,
         },
         body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
+            model: "openai/gpt-oss-120b",
             messages: [
                 ...(systemPrompt ? [{ role: "system", content: systemPrompt }] : []),
                 ...messages,
